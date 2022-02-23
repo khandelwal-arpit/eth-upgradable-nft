@@ -1,0 +1,183 @@
+Step1: truffle compile
+======================================================================================================
+Step2: truffle migrate --network ropsten --reset
+Output:
+Compiling your contracts...
+===========================
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Everything is up to date, there is nothing to compile.
+
+Starting migrations...
+======================
+> Network name:    'ropsten'
+> Network id:      3
+> Block gas limit: 8000000 (0x7a1200)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0xefb4dfe0eecfafce183a51b8acde0965607801cebd2198f4e5370020e3be921f
+   > Blocks: 2            Seconds: 100
+   > contract address:    0x1f0d8731c5Cf7B7CDe7979aa0393CECaDC528Fb3
+   > block number:        11842143
+   > block timestamp:     1642598191
+   > account:             0x07732566E3bc4983558a8942C07FfAa30d241644
+   > balance:             1.303672969803172263
+   > gas used:            176717 (0x2b24d)
+   > gas price:           34.942040274 gwei
+   > value sent:          0 ETH
+   > total cost:          0.006174852531100458 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 11842144)
+   > confirmation number: 2 (block: 11842145)
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.006174852531100458 ETH
+
+
+2_MyNFT_V1_migration.js
+=======================
+
+   Deploying 'MyNFT'
+   -----------------
+   > transaction hash:    0x99e9d3763a68e3bc6cd147e026199ebadab81f5d8a64797b7944f4d589da2867
+   > Blocks: 1            Seconds: 16
+   > contract address:    0xE5CC570C0C3Edc73AF1Fa58e62C161E02994F2FB
+   > block number:        11842149
+   > block timestamp:     1642598304
+   > account:             0x07732566E3bc4983558a8942C07FfAa30d241644
+   > balance:             1.20863364158982875
+   > gas used:            2833617 (0x2b3cd1)
+   > gas price:           33.015817049 gwei
+   > value sent:          0 ETH
+   > total cost:          0.093554180458936233 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 11842150)
+   > confirmation number: 2 (block: 11842151)
+
+   Deploying 'ProxyAdmin'
+   ----------------------
+   > transaction hash:    0x1e6acf067af0813860dd6dd7556109a139e698a6a2fb9dc5c6c1fda016f30bcc
+   > Blocks: 1            Seconds: 32
+   > contract address:    0xDADb043fc7285981b5eCbF9B67492485EaA8fe1c
+   > block number:        11842152
+   > block timestamp:     1642598343
+   > account:             0x07732566E3bc4983558a8942C07FfAa30d241644
+   > balance:             1.19230260655898309
+   > gas used:            484020 (0x762b4)
+   > gas price:           33.740413683 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01633103503084566 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 11842153)
+   > confirmation number: 2 (block: 11842154)
+
+   Deploying 'TransparentUpgradeableProxy'
+   ---------------------------------------
+   > transaction hash:    0xc9e8e698f57a3ddc85aa9784e7e8876efb6b817ceb52e0ccf9c8e7dc6ec8ccdf
+   > Blocks: 2            Seconds: 32
+   > contract address:    0xA5674a799E1e65B4aEE07295172b3A6db2F5c9dA
+   > block number:        11842156
+   > block timestamp:     1642598425
+   > account:             0x07732566E3bc4983558a8942C07FfAa30d241644
+   > balance:             1.166833072242643088
+   > gas used:            786198 (0xbff16)
+   > gas price:           32.395826899 gwei
+   > value sent:          0 ETH
+   > total cost:          0.025469534316340002 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 11842157)
+   > confirmation number: 2 (block: 11842158)
+Deployed 0xA5674a799E1e65B4aEE07295172b3A6db2F5c9dA
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.135354749806121895 ETH
+
+
+Summary
+=======
+> Total deployments:   4
+> Final cost:          0.141529602337222353 ETH
+======================================================================================================
+Step3: npx truffle run verify MyNFT --network ropsten
+Output:
+Verifying MyNFT
+Verifying proxy implementation at 0xe5cc570c0c3edc73af1fa58e62c161e02994f2fb
+Pass - Verified: https://ropsten.etherscan.io/address/0xA5674a799E1e65B4aEE07295172b3A6db2F5c9dA#code
+Successfully verified 1 contract(s).
+======================================================================================================
+Step4: truffle compile (after adding V2 contract)
+======================================================================================================
+Step5: truffle migrate --network ropsten
+Output:
+Compiling your contracts...
+===========================
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Everything is up to date, there is nothing to compile.
+
+
+
+Starting migrations...
+======================
+> Network name:    'ropsten'
+> Network id:      3
+> Block gas limit: 8000000 (0x7a1200)
+
+
+3_MyNFT_V2_migration.js
+=======================
+Existing Contract 0xA5674a799E1e65B4aEE07295172b3A6db2F5c9dA
+
+   Deploying 'MyNFTV2'
+   -------------------
+   > transaction hash:    0xe818cb0ae0ed2dc68321b2fb5faa7b0841d9e36bc7629a73395a6e80a30c1cfd
+   > Blocks: 1            Seconds: 16
+   > contract address:    0xb236A426186C218155A6e86da498F92D44630e02
+   > block number:        11842190
+   > block timestamp:     1642599017
+   > account:             0x07732566E3bc4983558a8942C07FfAa30d241644
+   > balance:             1.072067605365952749
+   > gas used:            2880962 (0x2bf5c2)
+   > gas price:           30.759088455 gwei
+   > value sent:          0 ETH
+   > total cost:          0.08861576499349371 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 11842191)
+   > confirmation number: 2 (block: 11842192)
+Upgraded 0xA5674a799E1e65B4aEE07295172b3A6db2F5c9dA
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.08861576499349371 ETH
+
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.08861576499349371 ETH
+======================================================================================================
+Step6: npx truffle run verify MyNFTV2 --network ropsten
+Output:
+Verifying MyNFTV2
+Verifying proxy implementation at 0xb236a426186c218155a6e86da498f92d44630e02
+Pass - Verified: https://ropsten.etherscan.io/address/0xA5674a799E1e65B4aEE07295172b3A6db2F5c9dA#code
+Successfully verified 1 contract(s).
+======================================================================================================
